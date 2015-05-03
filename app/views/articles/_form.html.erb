@@ -1,9 +1,4 @@
-  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
-//<![CDATA[
-        bkLib.onDomLoaded(function() { new nicEditor({fullPanel : true}).panelInstance('body');});
-  //]]>
-  </script>
-
+<script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
 <%= form_for(@article) do |f| %>
 <% if @article.errors.any? %>
 <div id="error_explanation">
@@ -44,3 +39,8 @@
 <button type="submit" class="btn btn-primary">Create</button>
 </form>
 <% end %>
+ <script type="text/javascript">
+//<![CDATA[
+CKEDITOR.replace('body');
+  //]]>
+  </script>
