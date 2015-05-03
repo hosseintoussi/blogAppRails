@@ -1,0 +1,17 @@
+<%= div_for comment do %>
+<div class="media">
+	<h4 class="media-heading"> 
+    <%= comment.email.split("@")[0] %> <small><%= comment.created_at %></small>
+    said:
+</h4>
+     <% if @article.owned_by? current_user %>
+    <span class='actions'>
+       <%= link_to 'Delete', [@article, comment], :confirm => 'Are you sure?', :method => :delete %>
+    </span>
+    <% end %>
+<div class="media-body">
+  <%= comment.body %>
+  <hr>
+</div>
+</div>
+<% end %>
