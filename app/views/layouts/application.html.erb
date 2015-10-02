@@ -9,54 +9,24 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<nav class="uk-navbar">
+    <a href=<%=root_path%> class="uk-navbar-brand">BLOG</a>
+    <ul class="uk-navbar-nav">
+        <li class="uk-active"><a href=""><i class="uk-icon-home uk-icon-medium"></i></a></li>
+        <li class="uk-parent"><a href="">CREATE</a></li>
+    </ul>
+      <!-- <div class="uk-navbar-content"><a href="">CREATE</a></div> -->
+    <div class="uk-navbar-flip">
+        <ul class="uk-navbar-nav">
+            <li class="uk-parent"><a href=""><i class="uk-icon-user uk-icon-medium"></i></a></li>
+        </ul>
+    </div>
+</nav>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">Blog</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                	<% if logged_in? %>
-                    <li>
-                        <%= link_to 'Create', new_article_path %>
-                    </li>
-                    <% end %>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                	<% if logged_in? %>
-                	<li>
-					    <%= link_to "Edit Password", edit_user_path(current_user) %> 
-					</li>
-					<li>
-					    <%= link_to "Logout", logout_path %>
-					</li>
-					  <% else %>
-					  <li>
-					    <%= link_to "Login", login_path %>
-					</li>
-					  <% end %>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-  <div id="main">
+<div class="uk-width-7-10 uk-container-center uk-margin-top">
+<%= yield %>
     <%= content_tag(:p, notice, class: 'alert alert-success') if notice.present? %>
     <%= content_tag(:p, alert, class: 'alert alert-warning') if alert.present? %>
-    <%= yield %>
-  </div>
-  <div id="footer">
-</div>
+    </div>
 </body>
 </html>

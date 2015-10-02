@@ -1,17 +1,18 @@
 <%= div_for comment do %>
-<div class="media">
-	<h4 class="media-heading"> 
-    <%= comment.email.split("@")[0] %> <small><%= comment.created_at %></small>
-    said:
-</h4>
+<div class=" uk-link-muted uk-comment">
+	<div class="uk-comment-header">
+  <div class="uk-comment-avatar"><i class="uk-icon-user uk-icon-large"></i></div>
+    <%= comment.email.split("@")[0].capitalize %>
+<div class="uk-comment-meta"><%= distance_of_time_in_words_to_now(comment.created_at)%> ago
      <% if @article.owned_by? current_user %>
-    <span class='actions'>
-       <%= link_to 'Delete', [@article, comment], :confirm => 'Are you sure?', :method => :delete %>
-    </span>
+<%= link_to  [@article, comment], :confirm => 'Are you sure?', :method => :delete do %>
+<i class="uk-icon-trash"></i>
+<% end %>
     <% end %>
-<div class="media-body">
+</div>
+<div class="uk-comment-body">
   <%= comment.body %>
-  <hr>
+</div>
 </div>
 </div>
 <% end %>

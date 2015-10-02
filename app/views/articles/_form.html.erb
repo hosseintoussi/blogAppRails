@@ -1,5 +1,4 @@
-<script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
-<%= form_for(@article) do |f| %>
+<%= form_for @article, :html => {:class => 'uk-form'} do |f| %>
 <% if @article.errors.any? %>
 <div id="error_explanation">
   <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -11,36 +10,30 @@
   </ul>
 </div>
 <% end %>
-  <form role="form">
-<div class="form-group">
-  <%= f.text_field :title, :class =>"form-control", :placeholder => "Title"%>
+<form class="uk-form data-no-turbolink">
+<div class="uk-form-row">
+  <%= f.text_field :title, :class => "uk-width-1-1", :placeholder => "Title"%>
 </div>
-<div class="form-group">
-  <%= f.text_area :body, :id =>"body", :class =>"form-control", :rows => "20" %>
+<div class="uk-form-row">
+  <%= f.text_area :body, :class => "ckeditor", :id =>"body", :rows => "50" %>
 </div>
-<div class="form-group">
-  <%= f.text_field :excerpt, :class =>"form-control",:width => "50", :placeholder => "Excerpt" %>
+<div class="uk-form-row">
+  <%= f.text_area :excerpt, :class =>"uk-width-1-1", :rows => "3", :placeholder => "Excerpt" %>
 </div>
-<div class="form-group">
-  <%= f.text_field :location, :class =>"form-control", :placeholder => "Location" %>
+<div class="uk-form-row">
+  <%= f.text_field :location, :class =>"uk-width-1-1", :placeholder => "Location" %>
 </div>
-<div class="form-group">
+<div class="uk-form-row">
   <%= f.label "Categories" %><br />
-  <% Category.all.each do |category| %>
-  <%= check_box_tag 'article[category_ids][]', category.id,
-  @article.category_ids.include?(category.id), id: dom_id(category) %>
-  <%= label_tag dom_id(category), category.name, class: "check_box_label" %>
-  <% end %>
+<%= select_tag "article[category_ids][]", options_from_collection_for_select(Category.all, "id", "name", @article.categories.ids), class: "select2", multiple: "multiple",  style: "width: 100%"%>
 </div>
-<div class="form-group">
+<div class="uk-form-row">
   <%= f.label :published_at %><br>
-  <%= f.datetime_select :published_at %>
+  <%= f.datetime_select :published_at%>
+
 </div>
-<button type="submit" class="btn btn-primary">Create</button>
+<div class="uk-form-row">
+  <%= f.submit class: 'uk-button'%>
+</div>
 </form>
 <% end %>
- <script type="text/javascript">
-//<![CDATA[
-CKEDITOR.replace('body');
-  //]]>
-  </script>

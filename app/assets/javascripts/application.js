@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ckeditor-jquery
 //= require turbolinks
 //= require_tree .
+//= require uikit
+//= require select2
+$( document ).on('page:change', function () {
+  $('.select2').select2({
+  	 theme: "classic"
+  });
+});

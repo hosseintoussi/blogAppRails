@@ -1,17 +1,30 @@
+
 <%= div_for article do %>
-<h3>
-		<% if article.owned_by? current_user %>
-	<span class='actions'>
-		<%= link_to "Edit", edit_article_path(article) %>
-		<%= link_to "Delete", article, confirm: "Are you sure?", method: :delete %>
-	</span>
-	<% end %>
-	<h2><%= article.title %></h2>
-        <p><span class="glyphicon glyphicon-time"></span> Published at <%= article.published_at %></p>
-        <hr>
-        <p class="lead">
-        <%= @article.excerpt %>
-        </p>
-</h3>
-<%= article.body.html_safe  %>
+	<article class="uk-article uk-margin-bottom">
+  <span class="uk-link-muted uk-float-right" data-no-turbolink>
+        <% if @article.owned_by?(current_user) %>
+    <%= link_to edit_article_path(@article) do %>
+    <i class="uk-icon-pencil"> Edit</i>
+    <% end %>
+        <%= link_to @article, method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="uk-icon-trash"> Delete</i>
+        <% end %>
+          <% end %>
+          </span>
+            <span class="uk-article-title"><%= article.title %></span>
+
+    <p class="uk-article-meta">
+                <i class="uk-icon-clock-o"></i>
+                <%= distance_of_time_in_words_to_now(article.published_at) %>
+                ago
+            </p>
+    <p class="uk-article-lead"><%= @article.excerpt %></p>
+    <hr class="uk-article-divider">
+</article>
+    <%= article.body.html_safe  %>
+    <span class="uk-float-right">
+    <% @article.categories.each do |category|%>
+    <span class="uk-badge" ><%= category.name %></span>
+    <% end %>
+    </span>
 <% end %>
