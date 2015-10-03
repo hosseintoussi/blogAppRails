@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :load_article
-  
+  before_action :authenticate_user!
+
   def create
     @comment = @article.comments.new(comment_params)
     @comment["email"] = current_user.email
