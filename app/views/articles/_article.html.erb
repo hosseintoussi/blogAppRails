@@ -4,10 +4,11 @@
   <span class="uk-link-muted uk-float-right" data-no-turbolink>
         <% if @article.owned_by?(current_user) %>
     <%= link_to edit_article_path(@article) do %>
-    <i class="uk-icon-pencil"> Edit</i>
+    <i class="uk-icon-pencil"></i>
     <% end %>
+    <span> | </span>
         <%= link_to @article, method: :delete, data: { confirm: 'Are you sure?' } do %>
-    <i class="uk-icon-trash"> Delete</i>
+    <i class="uk-icon-trash"></i>
         <% end %>
           <% end %>
           </span>

@@ -1,0 +1,25 @@
+<%= render 'new' %>
+<h1>Listing Categories</h1>
+
+<table class="uk-table uk-link-muted uk-width-small">
+  <thead>
+    <tr>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+      <td ><%= category.name %></td>
+      <td >
+        <%= link_to '', edit_category_path(category), class: "uk-icon-pencil" %>
+        <span> | </span>
+        <%= link_to '', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "uk-icon-trash" %>
+
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

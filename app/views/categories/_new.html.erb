@@ -1,0 +1,10 @@
+<h1>New Category</h1>
+
+<%= form_tag(categories_path,  method: "post", class: "uk-form") do %>
+      <div class="uk-form-row">
+  		<input type="text" name="category[name]" placeholder="Title" class="uk-width-1-2">
+  </div>
+  <div class="uk-form-row">
+  <%= submit_tag("Create", class: "uk-button") %>
+  </div>
+  <% end %>
