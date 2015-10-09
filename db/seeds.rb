@@ -5,12 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = User.create :email => 'admin@admin.com', :password => 'admin'
+user = User.create!({:email => "guy@gmail.com", :password => "password", :password_confirmation => "password" })
 
 Category.create [{:name => 'Programming'}, {:name => 'Event'}, {:name => 'Travel'}, {:name => 'Music'}, {:name => 'TV'}]
 
-user.articles.create :title => 'Advanced Active Record', :body => "Models need to relate to each other. In the real world, ..", :published_at => Date.today
-
-user.articles.create :title => 'One-to-many associations', :body => "One-to-many associations describe a pattern ..", :published_at => Date.today
-
-user.articles.create :title => 'Associations', :body => "Active Record makes working with associations easy..", :published_at => Date.today
+50.times { |i| user.articles.create(:title => '#{BetterLorem.c(10)} - #{i}', :body => BetterLorem.p(5, false, false), :excerpt => BetterLorem.w(60, true, true), :published_at => Date.today)}
