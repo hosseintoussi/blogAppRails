@@ -9,4 +9,4 @@ user = User.create!({:email => "guy@gmail.com", :password => "password", :passwo
 
 Category.create [{:name => 'Programming'}, {:name => 'Event'}, {:name => 'Travel'}, {:name => 'Music'}, {:name => 'TV'}]
 
-50.times { |i| user.articles.create(:title => '#{BetterLorem.c(10)} - #{i}', :body => BetterLorem.p(5, false, false), :excerpt => BetterLorem.w(60, true, true), :published_at => Date.today)}
+50.times { |i| user.articles.create(:title => BetterLorem.c(10, true, true), :body => BetterLorem.p(5, false, false), :excerpt => BetterLorem.w(60, true, true), :published_at => Date.today)}
