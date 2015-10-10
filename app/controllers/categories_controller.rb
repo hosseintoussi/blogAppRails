@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource
+
   # GET /categories
   # GET /categories.json
   def index
@@ -31,7 +33,7 @@ class CategoriesController < ApplicationController
         format.html { redirect_to categories_url, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
-        format.html { render :new }
+        format.html { redirect_to categories_url }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end

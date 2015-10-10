@@ -40,6 +40,7 @@ GEM
     bcrypt (3.1.10)
     betterlorem (0.1.2)
     builder (3.2.2)
+    cancancan (1.13.1)
     ckeditor_rails (4.5.3)
       railties (>= 3.0)
     coderay (1.1.0)
@@ -163,6 +164,7 @@ PLATFORMS
 
 DEPENDENCIES
   betterlorem
+  cancancan (~> 1.10)
   ckeditor_rails
   coffee-rails (~> 4.1.0)
   devise

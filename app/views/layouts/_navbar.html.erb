@@ -1,0 +1,67 @@
+<nav class="uk-navbar" data-uk-sticky>
+  <div class="uk-navbar-brand">BLOG</div>
+  <ul class="uk-navbar-nav">
+    <li class="uk-active"><a href=<%=root_path%>><i class="uk-icon-home uk-icon-medium"></i></a></li>
+    <li class="uk-parent"><a href=<%= new_article_path %> data-no-turbolink>CREATE</a></li>
+  </ul>
+  <!-- <div class="uk-navbar-content"><a href="">CREATE</a></div> -->
+  <div class="uk-navbar-flip">
+    <ul class="uk-navbar-nav">
+      <%if current_user%>
+      <% if current_user.has_setting_access?%>
+      <li class="uk-parent" data-uk-dropdown="{mode:'click'}"><a href=""><i class="uk-icon-cog uk-icon-medium"></i></a>
+        <div class="uk-dropdown uk-dropdown-navbar">
+          <ul class="uk-nav uk-nav-navbar">
+          <% if current_user.admin?%>
+            <li>
+              <%= link_to users_path do %>
+              <i class="uk-icon-users"> Users</i>
+              <% end %>
+            </li>
+            <% end %>
+            <li>
+              <%= link_to categories_path do %>
+              <i class="uk-icon-tags"> Categories</i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <% end %>
+      <li class="uk-parent" data-uk-dropdown="{mode:'click'}"><a href=""><i class="uk-icon-bars uk-icon-medium"></i></a>
+        <div class="uk-dropdown uk-dropdown-navbar">
+          <ul class="uk-nav uk-nav-navbar">
+            <li class="uk-nav-header"><%= current_user.email %></li>
+            <li class="uk-nav-divider"></li>
+            <li>
+              <%= link_to root_path do %>
+              <i class="uk-icon-user"> Profile</i>
+              <% end %>
+            </li>
+          </ul>
+          <ul class="uk-nav uk-nav-navbar">
+            <li>
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+              <i class="uk-icon-sign-out"> Logout</i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <%else%>
+      <li class="uk-parent" data-uk-dropdown="{mode:'click'}"><a href=""><i class="uk-icon-bars uk-icon-medium"></i></a>
+        <div class="uk-dropdown uk-dropdown-navbar">
+          <ul class="uk-nav uk-nav-navbar">
+            <li>
+              <%= link_to new_user_session_path  do %>
+              <i class="uk-icon-sign-in"> Login</i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <% end%>
+    </ul>
+  </div>
+</nav>

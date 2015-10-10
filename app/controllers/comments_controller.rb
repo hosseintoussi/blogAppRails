@@ -2,11 +2,14 @@ class CommentsController < ApplicationController
   before_action :load_article
   before_action :authenticate_user!
 
+  load_and_authorize_resource
+
   def create
     @comment = @article.comments.new(comment_params)
     @comment["email"] = current_user.email
+    @comment.user = current_user
     if @comment.save
-      redirect_to @article, notice: 'Thanks for your comment'
+      redirect_to @article
     else
       redirect_to @article, alert: 'Unable to add comment'
     end

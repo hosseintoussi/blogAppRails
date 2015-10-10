@@ -1,22 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-before_action :authenticate_user!
+  before_action :authenticate_user!
+
+  load_and_authorize_resource
 
   def index
-    @users = User.order(updated_at: :DESC)
-  end
-
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to articles_path, notice: 'User successfully added.'
-    else
-      render action: :new
-    end
+    @users = User.order(updated_at: :DESC).includes(:role)
   end
 
   def edit
@@ -24,7 +13,7 @@ before_action :authenticate_user!
 
   def update
     if @user.update(user_params)
-      redirect_to articles_path, notice: 'Updated user information successfully.'
+      redirect_to users_path, notice: 'Updated user information successfully.'
     else
       render action: 'edit'
     end
@@ -36,7 +25,7 @@ before_action :authenticate_user!
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :role_id).delete_if { |k, v| v.empty? }
   end
 
 end

@@ -1,0 +1,11 @@
+<%if notice.present?%>
+<div class="uk-alert uk-alert-success" data-uk-alert>
+    <a href="" class="uk-alert-close uk-close"></a>
+    <%= notice %>
+</div>
+<% elsif alert.present? %>
+<div class="uk-alert uk-alert-warning" data-uk-alert>
+    <a href="" class="uk-alert-close uk-close"></a>
+    <%= alert %>
+</div>
+<% end %>

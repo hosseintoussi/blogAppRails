@@ -36,6 +36,8 @@ gem 'devise'
 
 gem 'kaminari'
 
+gem 'cancancan', '~> 1.10'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
