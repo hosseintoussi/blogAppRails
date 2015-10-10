@@ -6,7 +6,11 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    if search_params
+      @categories = Category.search(search_params)
+    else
+      @categories = Category.all
+    end
   end
 
   # GET /categories/1
@@ -72,5 +76,9 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name)
+    end
+
+    def search_params
+      params.require(:search).permit(:name) if params[:search]
     end
 end

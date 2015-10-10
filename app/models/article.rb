@@ -1,7 +1,6 @@
 class Article < ActiveRecord::Base
   validates_presence_of :title, :body
 
-
   belongs_to :user
   has_and_belongs_to_many :categories
   has_many :comments
@@ -10,6 +9,13 @@ class Article < ActiveRecord::Base
   scope :draft, lambda { where("articles.published_at IS NULL") }
   scope :recent, lambda { published.where("articles.published_at > ?", 1.week.ago.to_date)}
   scope :where_title, lambda { |term| where("articles.title LIKE ?", "%#{term}%") }
+
+  searchable do
+    text :title, boost: 3
+    text :excerpt, :body
+
+    time :updated_at
+  end
 
   def long_title
     "#{title} - #{published_at}"
@@ -23,5 +29,4 @@ class Article < ActiveRecord::Base
     return false unless owner.is_a?(User)
     user == owner
   end
-
 end

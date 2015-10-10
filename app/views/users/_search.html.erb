@@ -1,0 +1,6 @@
+<%= form_tag(users_path,  method: "get", class: "uk-form") do %>
+    <div class="uk-form-row">
+      <input type="text" name="search[email]" placeholder="Email">
+      <%= submit_tag("Search", class: "uk-button") %>
+    </div>
+  <% end %>

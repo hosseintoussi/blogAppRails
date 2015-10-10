@@ -6,9 +6,11 @@
   </ul>
   <!-- <div class="uk-navbar-content"><a href="">CREATE</a></div> -->
   <div class="uk-navbar-flip">
+
     <ul class="uk-navbar-nav">
       <%if current_user%>
-      <% if current_user.has_setting_access?%>
+      <li class="uk-navbar-content uk-hidden-small"><%= render partial: 'articles/search' %></li>
+      <% if current_user.setting_access?%>
       <li class="uk-parent" data-uk-dropdown="{mode:'click'}"><a href=""><i class="uk-icon-cog uk-icon-medium"></i></a>
         <div class="uk-dropdown uk-dropdown-navbar">
           <ul class="uk-nav uk-nav-navbar">
@@ -62,6 +64,7 @@
         </div>
       </li>
       <% end%>
+
     </ul>
   </div>
 </nav>

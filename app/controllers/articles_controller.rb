@@ -6,7 +6,12 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.order(updated_at: :DESC).page params[:page]
+    @search = Article.search do
+      fulltext params[:search][:query] if params[:search]
+      paginate page: params[:page], per_page: 10
+      order_by(:updated_at, :desc)
+    end
+    @articles = @search.results
   end
 
   # GET /articles/1

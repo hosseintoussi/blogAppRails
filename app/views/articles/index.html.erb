@@ -1,24 +1,25 @@
- <% @articles.each do |article| %>
+<%= 'No results found...' if @articles.blank? %>
+<% @articles.each do |article| %>
 
-    <div class="uk-article">
-        <h3 class="uk-article-title"><%= article.title %></h3>
-            <div class="uk-article-meta">
-                <i class="uk-icon-clock-o"></i>
-                <%= distance_of_time_in_words_to_now(article.published_at) %>
-                ago
-            </div>
-
-        <div class="uk-article-lead">
-          <%= article.excerpt %>
-      </div>
-      <div><%= link_to article do %>
-      <i class="uk-icon-expand"> Read more...</i>
-      <% end %>
-      </div>
-    <hr class="uk-article-divider">
-
+<div class="uk-article">
+  <h3 class="uk-article-title"><%= article.title %></h3>
+  <div class="uk-article-meta">
+    <i class="uk-icon-clock-o"></i>
+    <%= distance_of_time_in_words_to_now(article.published_at) %>
+    ago
   </div>
-  <br>
-  <% end %>
+
+  <div class="uk-article-lead">
+    <%= article.excerpt %>
+  </div>
+  <div><%= link_to article do %>
+    <i class="uk-icon-expand"> Read more...</i>
+    <% end %>
+  </div>
+  <hr class="uk-article-divider">
+
+</div>
+<br>
+<% end %>
 
 <%= paginate @articles %>

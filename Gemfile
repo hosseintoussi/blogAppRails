@@ -36,6 +36,10 @@ gem 'kaminari'
 
 gem 'cancancan', '~> 1.10'
 
+# search
+gem "sunspot_with_kaminari"
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
