@@ -1,7 +1,7 @@
 
 <%= div_for article do %>
 	<article class="uk-article uk-margin-bottom">
-  <span class="uk-link-muted uk-float-right" data-no-turbolink>
+  <span class="uk-link-muted uk-float-right">
     <% if can? [:update, :destroy], @article %>
     <%= link_to edit_article_path(@article) do %>
     <i class="uk-icon-pencil"></i>
