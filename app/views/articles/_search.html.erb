@@ -1,4 +1,4 @@
-<%= form_tag(articles_path,  method: "get", class: "uk-form uk-margin-remove uk-display-inline-block") do %>
+<%= form_tag(articles_path,  method: "get", remote: true, class: "uk-form uk-margin-remove uk-display-inline-block") do %>
 <div class="uk-input-group">
 	<input type="text" name="search[query]" placeholder="Type and press Enter...">
 </div>
