@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @article.comments.new(comment_params)
-    @comment["email"] = current_user.email
+    @comment.email = current_user.email
     @comment.user = current_user
     if @comment.save
       redirect_to @article
@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def load_article
     @article = Article.find(params[:article_id])
   end

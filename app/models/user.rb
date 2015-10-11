@@ -1,16 +1,14 @@
 require 'digest'
 class User < ActiveRecord::Base
+  has_one :profile
+  belongs_to :role
+  has_many :articles, -> { order('published_at DESC, title ASC') }, dependent: :nullify
+  has_many :comments
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  has_one :profile
-  belongs_to :role
-
-  has_many :articles, -> { order('published_at DESC, title ASC') },
-           dependent: :nullify
-  has_many :comments
 
   before_create :set_default_role
 
