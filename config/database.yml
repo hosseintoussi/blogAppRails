@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: Blog_production
-  username: Mindvalley
-  password: sa7269230

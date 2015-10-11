@@ -3,10 +3,17 @@
 #### How do I get started? ####
 - Clone the repo.
 - Run `bundle install`.
-- Then setup your db; you may use `rake db:setup`.
-- Next would be to start the app. You will need to install foreman gem (`gem install foreman`) if you don't have it already, and run:
+- Then setup your db; you may use `rake db:setup`. If you don't use setup, ensure that you run the seed file to populate the default roles.
+- Next would be to start the app. You will need to install foreman gem (`gem install foreman`) if you don't have it already, and run
  ```foreman start```
 This will start sunspot solr, and run your rails app on a webrick server usning port 3000.
+
+There are 3 types of users:
+- Admin: can manage everything.
+- Moderator: can manage everything, but cannot manage users.
+- User: can create articles, comment, and manage their own posts.
+
+New posts will be automatically added to the index for search, but in case you need to reindx, you can run `bundle exec rake sunspot:reindex`.
 
 #### Overview of the dashboard ####
 ![Screen Shot 2015-10-10 at 8.21.06 PM.png](https://bitbucket.org/repo/eMrKMB/images/485102621-Screen%20Shot%202015-10-10%20at%208.21.06%20PM.png)

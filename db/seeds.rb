@@ -9,9 +9,10 @@
   Role.find_or_create_by({name: role})
 end
 
-Category.create [{:name => 'Programming'}, {:name => 'Event'}, {:name => 'Travel'}, {:name => 'Music'}, {:name => 'TV'}]
+# Category.create [{:name => 'Programming'}, {:name => 'Event'}, {:name => 'Travel'}, {:name => 'Music'}, {:name => 'TV'}]
 
-user = User.find_or_create_by({:email => "guy@gmail.com", :password => "password", :password_confirmation => "password" })
+# user = User.find_or_create_by({:email => "guy@gmail.com", :password => "password", :password_confirmation => "password" })
 
-50.times { |i| user.articles.create(:title => BetterLorem.c(10, true, true), :body => BetterLorem.p(5, false, false), :excerpt => BetterLorem.w(60, true, true), :published_at => Date.today)}
+# 50.times { |i| user.articles.create(:title => BetterLorem.c(10, true, true), :body => BetterLorem.p(5, false, false),
+# :excerpt => BetterLorem.w(60, true, true), :published_at => Date.today)}
 
