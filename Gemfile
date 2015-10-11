@@ -35,12 +35,6 @@ gem 'sunspot_with_kaminari'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 
-gem 'capistrano', '~> 3.4.0'
-# rails specific capistrano funcitons
-gem 'capistrano-rails', '~> 1.1.0'
-# integrate bundler with capistrano
-gem 'capistrano-bundler'
-gem 'capistrano-rvm'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
