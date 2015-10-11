@@ -12,7 +12,7 @@ This will start sunspot solr, and run your rails app on a webrick server usning 
 
 - Admin: can manage everything.
 - Moderator: can manage everything, but cannot manage users.
-- User: can create articles, comment, and manage their own posts.
+- User: can create articles, comment, and manage their own posts but not the comments on their posts.
 
 New posts will be automatically added to the index for search, but in case you need to reindx, you can run `bundle exec rake sunspot:reindex`.
 
