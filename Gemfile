@@ -23,7 +23,7 @@ gem 'select2-rails'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'betterlorem'
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 # authenticaion
 gem 'devise'
 # pagination
@@ -34,6 +34,13 @@ gem 'cancancan', '~> 1.10'
 gem 'sunspot_with_kaminari'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+
+gem 'capistrano', '~> 3.4.0'
+# rails specific capistrano funcitons
+gem 'capistrano-rails', '~> 1.1.0'
+# integrate bundler with capistrano
+gem 'capistrano-bundler'
+gem 'capistrano-rvm'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
