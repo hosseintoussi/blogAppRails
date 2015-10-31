@@ -1,3 +1,10 @@
+# t.integer  "article_id"
+# t.string   "name"
+# t.string   "email"
+# t.text     "body"
+# t.datetime "created_at", null: false
+# t.datetime "updated_at", null: false
+# t.integer  "user_id"
 class Comment < ActiveRecord::Base
   belongs_to :article
   belongs_to :user

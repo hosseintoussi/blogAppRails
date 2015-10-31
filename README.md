@@ -8,6 +8,9 @@
  `foreman start`
 This will start sunspot solr, and run your rails app on a webrick server usning port 3000.
 
+- Note for tests:
+For rspec tests to pass, you will need to run `rake sunspot:solr:run RAILS_ENV=test` to start sunspot solr in test env.
+
 ######There are 3 types of users:######
 
 - Admin: can manage everything.
