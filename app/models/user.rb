@@ -21,32 +21,19 @@ class User < ActiveRecord::Base
     end
   end
 
-  def admin?
-    role.name == 'admin'
-  rescue
-    false
-  end
-
-  def moderator?
-    role.name == 'moderator'
-  rescue
-    false
-  end
-
-  def user?
-    role.name == 'user'
-  rescue
-    false
-  end
-
-  def banned?
-    role.name == 'banned'
-  rescue
-    false
+  ROLES = %w(admin moderator user banned)
+  ROLES.each do |role|
+    define_method("#{role}?") do
+      role_name == role
+    end
   end
 
   def setting_access?
     admin? || moderator?
+  end
+
+  def role_name
+    role.name if role
   end
 
   private

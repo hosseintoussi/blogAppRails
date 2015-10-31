@@ -11,3 +11,13 @@
 /log/*
 !/log/.keep
 /tmp
+
+coverage
+
+solr/data/*
+solr/test/*
+solr/development/*
+solr/default/*
+/log/*.log.lck
+solr/pids/*
+*.DS_Store

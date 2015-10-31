@@ -3,7 +3,9 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-    if user.admin?
+    if user.new_record?
+      can :read, Article
+    elsif user.admin?
       can :manage, :all
     elsif user.moderator?
       can :manage, :all
@@ -19,8 +21,6 @@ class Ability
       end
     elsif user.banned?
       # not yet
-    else
-      can :read, Article
     end
   end
 end
