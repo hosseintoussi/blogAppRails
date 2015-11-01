@@ -1,4 +1,4 @@
-### Blog app on learning rails ###
+### Blog app on rails ###
 
 #### How do I get started? ####
 - Clone the repo.
