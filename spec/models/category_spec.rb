@@ -1,5 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let!(:category) { create(:category) }
+
+  describe '.search' do
+    it 'returns the category' do
+      query = { name: category.name }
+      expect(Category.search(query).first).to eq(category)
+    end
+
+    it 'returns all when query is blank' do
+      query = { name: '' }
+      expect(Category.search(query).count).to eq(Category.count)
+    end
+  end
 end
