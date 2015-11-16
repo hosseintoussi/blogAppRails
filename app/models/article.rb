@@ -1,11 +1,17 @@
-# t.string   "title"
-# t.text     "body"
-# t.datetime "published_at"
-# t.datetime "created_at",   null: false
-# t.datetime "updated_at",   null: false
-# t.string   "excerpt"
-# t.string   "location"
-# t.integer  "user_id"
+# == Schema Information
+#
+# Table name: articles
+#
+#  id           :integer          not null, primary key
+#  title        :string
+#  body         :text
+#  published_at :datetime
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  excerpt      :string
+#  location     :string
+#  user_id      :integer
+#
 class Article < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :categories

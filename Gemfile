@@ -34,10 +34,11 @@ gem 'cancancan', '~> 1.10'
 gem 'sunspot_with_kaminari'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-
+gem 'annotate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
+  gem "better_errors"
   gem 'pry'
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'

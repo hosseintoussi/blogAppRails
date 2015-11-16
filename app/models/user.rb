@@ -1,17 +1,23 @@
-# t.string   "email"
-# t.string   "hashed_password"
-# t.datetime "created_at",                          null: false
-# t.datetime "updated_at",                          null: false
-# t.string   "encrypted_password",     default: "", null: false
-# t.string   "reset_password_token"
-# t.datetime "reset_password_sent_at"
-# t.datetime "remember_created_at"
-# t.integer  "sign_in_count",          default: 0,  null: false
-# t.datetime "current_sign_in_at"
-# t.datetime "last_sign_in_at"
-# t.inet     "current_sign_in_ip"
-# t.inet     "last_sign_in_ip"
-# t.integer  "role_id"
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  email                  :string
+#  hashed_password        :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  role_id                :integer
+#
 require 'digest'
 class User < ActiveRecord::Base
   has_one :profile
